@@ -1,6 +1,6 @@
 import { toast } from 'react-toastify';
-import { addContact } from 'redux/contacts/contactsOperations';
-import { changeFilter } from 'redux/filterSlice';
+import { addContact } from 'redux/contacts/operations';
+import { changeFilter } from 'redux/filter/filterSlice';
 
 export const onAddContact = (e, dispatch, contacts) => {
   e.preventDefault();
@@ -14,7 +14,7 @@ export const onAddContact = (e, dispatch, contacts) => {
     dispatch(
       addContact({
         name: name.value,
-        phone: number.value,
+        number: number.value,
       })
     );
     dispatch(changeFilter(''));

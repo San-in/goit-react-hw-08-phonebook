@@ -1,9 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { selectContacts } from 'redux/selectors';
+import { selectContacts } from 'redux/contacts/selectors';
 import {
   StyledForm,
   StyledInput,
@@ -33,7 +32,6 @@ export const ContactForm = () => {
         />
         <StyledFormBtn type="submit">Add Contact</StyledFormBtn>
       </StyledForm>
-      <ToastContainer />
     </>
   );
 };

@@ -1,24 +1,24 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { STATUS } from 'redux/constants';
-import { logOutUser } from 'redux/auth/operations';
 import { AnyOfActionsFilteredByStatus, getAction } from 'redux/helpersActions';
-import * as operations from 'redux/contacts/operations';
-import * as handlers from 'redux/contacts/helpersHandlers';
+import * as operations from 'redux/auth/operations';
+import * as handlers from 'redux/auth/helpersHandlers';
 
-const { addContact, deleteContact, fetchContacts } = operations;
+const { registrationUser, logInUser, logOutUser } = operations;
 
-const contactsSlice = createSlice({
-  name: 'contacts',
+const authSlice = createSlice({
+  name: 'auth',
   initialState: {
-    items: [],
-    isLoading: false,
+    user: { name: '', email: '' },
+    token: null,
+    isLoginIn: false,
     error: null,
+    isLoading: false,
   },
   extraReducers: builder => {
     builder
-      .addCase(getAction(fetchContacts), handlers.fulfilledGet)
-      .addCase(getAction(addContact), handlers.fulfilledPost)
-      .addCase(getAction(deleteContact), handlers.fulfilledDelete)
+      .addCase(getAction(registrationUser), handlers.registration)
+      .addCase(getAction(logInUser), handlers.login)
       .addCase(getAction(logOutUser), handlers.logout)
       .addMatcher(
         AnyOfActionsFilteredByStatus(STATUS.PENDING, operations),
@@ -35,4 +35,4 @@ const contactsSlice = createSlice({
   },
 });
 
-export const contactsReducer = contactsSlice.reducer;
+export const authReducer = authSlice.reducer;

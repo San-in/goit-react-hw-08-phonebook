@@ -18,3 +18,6 @@ export const fulfilledPost = (state, { payload }) => {
 export const fulfilledDelete = (state, { payload }) => {
   state.items = state.items.filter(({ id }) => id !== payload);
 };
+export const logout = state => {
+  state.items = [];
+};

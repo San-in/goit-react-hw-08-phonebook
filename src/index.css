@@ -8,6 +8,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+body,
+html,
+#root {
+  width: 100%;
+  height: 100%;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -20,4 +26,11 @@ h3 {
 }
 p {
   margin: 0;
+}
+* {
+  caret-color: transparent;
+}
+.react-icons {
+  color: orangered;
+  margin-right: 10px;
 }

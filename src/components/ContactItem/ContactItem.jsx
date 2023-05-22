@@ -5,7 +5,7 @@ import {
   StyledContactItem,
   StyledContactBtn,
 } from 'components/ContactItem/ContactItem.styled';
-import { deleteContact } from 'redux/contacts/contactsOperations';
+import { deleteContact } from 'redux/contacts/operations';
 
 export const ContactItem = ({ item: { name, phone, id } }) => {
   const dispatch = useDispatch();
@@ -29,7 +29,7 @@ export const ContactItem = ({ item: { name, phone, id } }) => {
 ContactItem.propTypes = {
   item: PropTypes.exact({
     name: PropTypes.string.isRequired,
-    phone: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
   }).isRequired,
 };

@@ -1,16 +1,14 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FilterLabel, FilterInput } from 'components/Filter/Filter.styled';
-import { changeFilter } from 'redux/filterSlice';
-import { selectFilterValue } from 'redux/selectors';
+import { selectFilterValue } from 'redux/filter/selectors';
+import { onBlur } from './helpers/onBlur';
+import { onChange } from './helpers/onChange';
 
 export const Filter = () => {
   const dispatch = useDispatch();
   const filterValue = useSelector(selectFilterValue);
-  const onBlur = ({ target: { value } }) => (value = '');
-  const onChange = ({ target: { value } }) => {
-    dispatch(changeFilter(value));
-  };
+
   return (
     <>
       <FilterLabel htmlFor="find">Find contacts by name</FilterLabel>
@@ -19,7 +17,7 @@ export const Filter = () => {
         name="find"
         id="find"
         value={filterValue}
-        onChange={onChange}
+        onChange={e => onChange(e, dispatch)}
         onBlur={onBlur}
       />
     </>

@@ -1,48 +1,72 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { Suspense, lazy } from 'react';
+import { SharedLayout } from './SharedLayout/SharedLayout';
+import { Route, Routes } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { selectToken } from 'redux/auth/selectors';
+import { setToken } from 'redux/helpersAxious';
+import { PrivateRoot } from 'components/PrivateRoot';
+import { PublicRoot } from './PublicRoot';
 import { PacmanLoader } from 'react-spinners';
-import { selectContacts, selectIsLoading } from 'redux/selectors';
-import { ContactForm } from 'components/ContactForm/ContactForm';
-import { Filter } from 'components/Filter/Filter';
-import { ContactList } from 'components/ContactList/ContactList ';
-import { fetchContacts } from 'redux/contacts/contactsOperations';
+import { ToastContainer } from 'react-toastify';
+
+const Home = lazy(() => import('pages/Home'));
+const Contacts = lazy(() => import('pages/Contacts'));
+const Registration = lazy(() => import('pages/Registration'));
+const Authorization = lazy(() => import('pages/Authorization/Authorization'));
+const NotFound = lazy(() => import('pages/NotFound'));
 
 export const App = () => {
-  const dispatch = useDispatch();
+  const token = useSelector(selectToken);
 
   useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
-
-  const contacts = useSelector(selectContacts);
-  const isLoading = useSelector(selectIsLoading);
+    token && setToken(token);
+  }, [token]);
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection: 'column',
-        fontSize: 40,
-        color: '#010101',
-      }}
-    >
-      <h3>Phonebook</h3>
-      <ContactForm />
-      <h3>Contacts</h3>
-      {!isLoading ? (
-        contacts.length > 0 ? (
-          <>
-            <Filter />
-            <ContactList />
-          </>
-        ) : (
-          <p>No contacts</p>
-        )
-      ) : (
-        <PacmanLoader color="#36d7b7" />
-      )}
-    </div>
+    <Suspense fallback={<PacmanLoader color="#36d7b7" />}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexDirection: 'column',
+          fontSize: 40,
+          color: '#010101',
+          height: '100%',
+        }}
+      >
+        <Routes>
+          <Route path="/" element={<SharedLayout />}>
+            <Route index element={<PublicRoot component={<Home />} />} />
+            <Route
+              path="contacts"
+              element={<PrivateRoot component={<Contacts />} />}
+            />
+          </Route>
+          <Route
+            path="/register"
+            element={
+              <PublicRoot
+                component={<Registration />}
+                redirectTo="/contacts"
+                restrict
+              />
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <PublicRoot
+                component={<Authorization />}
+                redirectTo="/contacts"
+                restrict
+              />
+            }
+          />
+          <Route path="*" element={<PublicRoot component={<NotFound />} />} />
+        </Routes>
+      </div>
+    </Suspense>
   );
 };
