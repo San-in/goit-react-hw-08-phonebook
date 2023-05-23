@@ -8,7 +8,6 @@ import { setToken } from 'redux/helpersAxious';
 import { PrivateRoot } from 'components/PrivateRoot';
 import { PublicRoot } from './PublicRoot';
 import { PacmanLoader } from 'react-spinners';
-import { ToastContainer } from 'react-toastify';
 
 const Home = lazy(() => import('pages/Home'));
 const Contacts = lazy(() => import('pages/Contacts'));

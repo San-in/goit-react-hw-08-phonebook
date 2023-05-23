@@ -1,10 +1,7 @@
-import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
 import { useSelector } from 'react-redux';
 import { selectIslogIn } from 'redux/auth/selectors';
 
@@ -33,9 +30,7 @@ export default function MenuAppBar() {
         <StyledAppBar position="static">
           <Toolbar>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              <StyledNavLink to="/" end>
-                Home
-              </StyledNavLink>
+              <StyledNavLink to="/">Home</StyledNavLink>
             </Typography>
             <Typography variant="h6" component="div" sx={{ flexGrow: 55 }}>
               {isLoginIn && (

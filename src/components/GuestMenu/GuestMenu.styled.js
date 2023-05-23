@@ -22,7 +22,15 @@ export const StyledLink = styled(Link)`
 `;
 
 export const StyledGuestMenu = styled.div`
+  text-align: center;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+`;
+export const Auth = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;

@@ -20,16 +20,19 @@ code {
     monospace;
 }
 
-h3 {
+h3,
+h2 {
   margin-top: 30px;
   margin-bottom: 30px;
+  caret-color: transparent;
+  text-align: center;
 }
-p {
+p,
+a {
   margin: 0;
-}
-* {
   caret-color: transparent;
 }
+
 .react-icons {
   color: orangered;
   margin-right: 10px;
