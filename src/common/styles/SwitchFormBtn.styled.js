@@ -1,24 +1,5 @@
 import styled from '@emotion/styled';
-import img from 'images/bg-modern.jpg';
 import { Link } from 'react-router-dom';
-
-export const FormBtnsSet = styled.div`
-  display: flex;
-  gap: 15px;
-`;
-
-export const StyledAuthWrap = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: url(${img});
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-`;
 
 export const SwitchFormBtn = styled(Link)`
   display: inline-flex;
@@ -39,8 +20,4 @@ export const SwitchFormBtn = styled(Link)`
   &:active {
     transform: scale(0.95);
   }
-`;
-
-export const BackHomeBtn = styled(SwitchFormBtn)`
-  margin-right: 40%;
 `;

@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom/dist';
 import { MainWrapper, StyledFooter, StyledOutlet } from './SharedLayout.styled';
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import MenuAppBar from 'components/MenuAppBar/MenuAppBat';
 
 export const SharedLayout = () => {

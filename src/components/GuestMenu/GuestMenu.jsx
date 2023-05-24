@@ -1,13 +1,15 @@
-import { Auth, StyledGuestMenu, StyledLink } from './GuestMenu.styled';
+import { MainContentWrap } from 'common/styles/MainContentWrap.styled';
+import { StyledLink } from 'common/styles/StyledLink.styled';
+import { Auth } from 'components/GuestMenu/GuestMenu.styled';
 
 export const GuestMenu = () => {
   return (
-    <StyledGuestMenu>
+    <MainContentWrap>
       <h2>Start to use all our feathures</h2>
       <Auth>
         <StyledLink to="/register">Registration</StyledLink>
         <StyledLink to="/login">Log in</StyledLink>
       </Auth>
-    </StyledGuestMenu>
+    </MainContentWrap>
   );
 };

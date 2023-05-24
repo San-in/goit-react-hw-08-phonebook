@@ -1,5 +1,8 @@
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import { StyledLink } from 'common/styles/StyledLink.styled';
+import { MainSubtitle } from 'common/styles/MainSubtitle.styled';
+import { MainContentWrap } from 'common/styles/MainContentWrap.styled';
 
 const NotFound = () => {
   const navigate = useNavigate();
@@ -18,11 +21,13 @@ const NotFound = () => {
 
   return (
     <>
-      <section>
+      <MainContentWrap>
         <h2>404</h2>
-        <p>Oops! The page you are looking for cannot be found.</p>
-        <NavLink to="/">Go Home</NavLink>
-      </section>
+        <MainSubtitle>
+          Oops! The page you are looking for cannot be found.
+        </MainSubtitle>
+        <StyledLink to="/">Go Home</StyledLink>
+      </MainContentWrap>
     </>
   );
 };

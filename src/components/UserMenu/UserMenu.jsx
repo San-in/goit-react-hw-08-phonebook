@@ -7,6 +7,7 @@ import { BiExit } from 'react-icons/bi';
 import { MdOutlineMarkEmailRead } from 'react-icons/md';
 import { BiUserPin } from 'react-icons/bi';
 import { IconContext } from 'react-icons';
+import PropTypes from 'prop-types';
 
 export const UserMenu = ({ anchorEl, handleClose }) => {
   const { name, email } = useSelector(selectUserInfo);
@@ -54,4 +55,9 @@ export const UserMenu = ({ anchorEl, handleClose }) => {
       </Menu>
     </>
   );
+};
+
+UserMenu.propTypes = {
+  anchorEl: PropTypes.func,
+  handleClose: PropTypes.func,
 };

@@ -17,8 +17,8 @@ export default function MenuAppBar() {
   const [anchorEl, setAnchorEl] = useState(null);
   const isLoginIn = useSelector(selectIslogIn);
 
-  const handleMenu = event => {
-    setAnchorEl(event.currentTarget);
+  const handleMenu = ({ currentTarget }) => {
+    setAnchorEl(currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);

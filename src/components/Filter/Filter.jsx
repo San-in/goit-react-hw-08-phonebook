@@ -2,8 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FilterLabel, FilterInput } from 'components/Filter/Filter.styled';
 import { selectFilterValue } from 'redux/filter/selectors';
-import { onBlur } from './helpers/onBlur';
-import { onChange } from './helpers/onChange';
+import { onBlur, onChange } from 'common/helpers';
 
 export const Filter = () => {
   const dispatch = useDispatch();

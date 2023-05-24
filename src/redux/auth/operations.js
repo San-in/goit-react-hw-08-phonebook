@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { dellToken, setToken } from 'redux/helpersAxious';
+
 import { toast } from 'react-toastify';
+import { dellToken, setToken } from 'common/helpers/helpersAxious';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
 
@@ -27,6 +28,10 @@ export const logInUser = createAsyncThunk(
   'auth/login',
   async (body, thunkAPI) => {
     try {
+      if (!body.name && !body.password) {
+        toast.warning('Both fields must be filled');
+        return;
+      }
       const { data } = await axios.post('/users/login', body);
       setToken(data.token);
       toast.success('You are logged in');

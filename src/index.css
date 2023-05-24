@@ -32,6 +32,9 @@ a {
   margin: 0;
   caret-color: transparent;
 }
+div {
+  caret-color: transparent;
+}
 
 .react-icons {
   color: orangered;

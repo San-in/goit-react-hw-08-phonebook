@@ -1,9 +1,9 @@
+import { StyledPacmanLoader } from 'common/styles';
 import { ContactForm } from 'components/ContactForm/ContactForm';
 import { ContactList } from 'components/ContactList/ContactList ';
 import { Filter } from 'components/Filter/Filter';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { PacmanLoader } from 'react-spinners';
 import { selectIslogIn } from 'redux/auth/selectors';
 import { fetchContacts } from 'redux/contacts/operations';
 import { selectContacts, selectIsLoading } from 'redux/contacts/selectors';
@@ -32,7 +32,7 @@ const Contacts = () => {
           <p>No contacts</p>
         )
       ) : (
-        <PacmanLoader color="#36d7b7" />
+        <StyledPacmanLoader color="rgb(128, 0, 128, 0.8)" size="75px" />
       )}
     </>
   );

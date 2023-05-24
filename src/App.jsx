@@ -1,18 +1,17 @@
-import React, { Suspense, lazy } from 'react';
-import { SharedLayout } from './SharedLayout/SharedLayout';
+import { Suspense, lazy, useEffect } from 'react';
+import { SharedLayout } from './components/SharedLayout/SharedLayout';
 import { Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { PrivateRoot } from 'common/PrivateRoot';
 import { selectToken } from 'redux/auth/selectors';
-import { setToken } from 'redux/helpersAxious';
-import { PrivateRoot } from 'components/PrivateRoot';
-import { PublicRoot } from './PublicRoot';
-import { PacmanLoader } from 'react-spinners';
+import { setToken } from 'common/helpers/helpersAxious';
+import { PublicRoot } from 'common/PublicRoot';
+import { StyledPacmanLoader } from 'common/styles';
 
 const Home = lazy(() => import('pages/Home'));
 const Contacts = lazy(() => import('pages/Contacts'));
 const Registration = lazy(() => import('pages/Registration'));
-const Authorization = lazy(() => import('pages/Authorization/Authorization'));
+const Authorization = lazy(() => import('pages/Authorization'));
 const NotFound = lazy(() => import('pages/NotFound'));
 
 export const App = () => {
@@ -23,7 +22,11 @@ export const App = () => {
   }, [token]);
 
   return (
-    <Suspense fallback={<PacmanLoader color="#36d7b7" />}>
+    <Suspense
+      fallback={
+        <StyledPacmanLoader color="rgb(128, 0, 128, 0.8)" size="75px" />
+      }
+    >
       <div
         style={{
           display: 'flex',

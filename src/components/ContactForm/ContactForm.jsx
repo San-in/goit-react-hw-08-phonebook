@@ -1,37 +1,75 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import 'react-toastify/dist/ReactToastify.css';
-
 import { selectContacts } from 'redux/contacts/selectors';
-import {
-  StyledForm,
-  StyledInput,
-  StyledFormBtn,
-} from 'components/ContactForm/ContactForm.styled';
-import { onAddContact } from 'components/ContactForm/onAddContact';
+import { onAddContact } from 'common/helpers/onAddContact';
+import { Box, Button, TextField } from '@mui/material';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
   return (
     <>
-      <StyledForm onSubmit={e => onAddContact(e, dispatch, contacts)}>
-        <StyledInput
+      <Box
+        component="form"
+        sx={{
+          padding: '20px',
+          marginBottom: '20px',
+          border: '2px solid rgba(128, 0, 128, 0.8)',
+          maxWidth: '50vw',
+          display: 'flex',
+          flexDirection: 'column',
+          justufyContent: 'center',
+          alignItems: 'center',
+          borderRadius: '20px',
+          backgroundColor: 'rgba(255, 255, 255, 0.7)',
+
+          '&:hover': {
+            backgroundColor: 'rgba(255, 255, 255, 0.95)',
+            border: '2px solid rgb(128, 0, 128, 1)',
+          },
+          '&:focus': {
+            backgroundColor: 'rgba(255, 255, 255, 0.95)',
+            border: '2px solid rgb(128, 0, 128, 1)',
+          },
+        }}
+        noValidate
+        onSubmit={e => onAddContact(e, dispatch, contacts)}
+      >
+        <TextField
+          label="Name"
           type="text"
-          name="name"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+          id="name"
+          color="secondary"
           required
+          sx={{
+            width: '90%',
+            marginBottom: '20px',
+          }}
         />
-        <StyledInput
+        <TextField
+          label="Phone"
           type="tel"
-          name="number"
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+          id="number"
+          color="secondary"
           required
+          sx={{
+            width: '90%',
+            marginBottom: '20px',
+          }}
         />
-        <StyledFormBtn type="submit">Add Contact</StyledFormBtn>
-      </StyledForm>
+        <Button
+          type="submit"
+          color="secondary"
+          sx={{
+            fontWeight: 600,
+            '&:hover': {
+              border: '1px solid rgba(128, 0, 128, 0.8)',
+            },
+          }}
+        >
+          Add Contact
+        </Button>
+      </Box>
     </>
   );
 };

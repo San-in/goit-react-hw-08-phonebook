@@ -15,41 +15,35 @@ import {
 import DeleteIcon from '@mui/icons-material/Delete';
 import SendIcon from '@mui/icons-material/Send';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
-  BackHomeBtn,
   FormBtnsSet,
-  LinkFormBtn,
   StyledAuthWrap,
   SwitchFormBtn,
-} from './Authorization.styled';
+  BackHomeBtn,
+} from 'common/styles';
+import {
+  handleCancel,
+  handleEmailChange,
+  handleMouseDownPassword,
+  handlePasswordChange,
+} from 'common/helpers';
 
 const Authorization = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+
   const dispatch = useDispatch();
 
-  const handleEmailChange = e => {
-    setEmail(e.target.value);
-  };
-  const handlePasswordChange = e => {
-    setPassword(e.target.value);
-  };
-  const handleCancel = () => {
-    setEmail('');
-    setPassword('');
-  };
   const handleSubmit = e => {
     e.preventDefault();
     dispatch(logInUser({ email, password }));
-    handleCancel();
+    handleCancel([setEmail, setPassword]);
   };
 
   const handleClickShowPassword = () => setShowPassword(show => !show);
-
-  const handleMouseDownPassword = event => {
-    event.preventDefault();
-  };
 
   return (
     <StyledAuthWrap>
@@ -88,7 +82,7 @@ const Authorization = () => {
           type="email"
           id="email"
           value={email}
-          onChange={handleEmailChange}
+          onChange={e => handleEmailChange(e, setEmail)}
           required
           sx={{
             width: '90%',
@@ -109,7 +103,7 @@ const Authorization = () => {
             id="outlined-adornment-password"
             type={showPassword ? 'text' : 'password'}
             value={password}
-            onChange={handlePasswordChange}
+            onChange={e => handlePasswordChange(e, setPassword)}
             required
             endAdornment={
               <InputAdornment position="end">
@@ -142,7 +136,7 @@ const Authorization = () => {
               minWidth: 117,
             }}
             variant="outlined"
-            onClick={handleCancel}
+            onClick={() => handleCancel([setEmail, setPassword])}
             startIcon={<DeleteIcon />}
           >
             Cancel
@@ -151,6 +145,15 @@ const Authorization = () => {
       </Box>
 
       <SwitchFormBtn to="/register">Go to Registration</SwitchFormBtn>
+      <ToastContainer
+        autoClose={300}
+        draggablePercent={60}
+        style={{
+          width: 200,
+          fontSize: 14,
+          fontWeight: 600,
+        }}
+      />
     </StyledAuthWrap>
   );
 };

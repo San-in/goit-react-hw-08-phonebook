@@ -1,6 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { STATUS } from 'redux/constants';
-import { AnyOfActionsFilteredByStatus, getAction } from 'redux/helpersActions';
+import { STATUS } from 'common/constants';
+import {
+  AnyOfActionsFilteredByStatus,
+  getAction,
+} from 'common/helpers/helpersActions';
 import * as operations from 'redux/auth/operations';
 import * as handlers from 'redux/auth/helpersHandlers';
 

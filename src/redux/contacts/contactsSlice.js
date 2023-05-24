@@ -1,7 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { STATUS } from 'redux/constants';
+import { STATUS } from 'common/constants';
 import { logOutUser } from 'redux/auth/operations';
-import { AnyOfActionsFilteredByStatus, getAction } from 'redux/helpersActions';
+import {
+  AnyOfActionsFilteredByStatus,
+  getAction,
+} from 'common/helpers/helpersActions';
 import * as operations from 'redux/contacts/operations';
 import * as handlers from 'redux/contacts/helpersHandlers';
 

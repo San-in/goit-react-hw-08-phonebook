@@ -1,5 +1,5 @@
 import { isAnyOf } from '@reduxjs/toolkit';
-import { STATUS } from 'redux/constants';
+import { STATUS } from 'common/constants';
 
 export const AnyOfActionsFilteredByStatus = (status, operations) => {
   const arrayOfActions = Object.values(operations);
