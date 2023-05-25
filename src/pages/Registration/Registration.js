@@ -6,7 +6,6 @@ import { selectIslogIn } from 'redux/auth/selectors';
 import { AiOutlineHome } from 'react-icons/ai';
 import DeleteIcon from '@mui/icons-material/Delete';
 import SendIcon from '@mui/icons-material/Send';
-import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {
   FormBtnsSet,
