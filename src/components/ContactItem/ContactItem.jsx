@@ -3,8 +3,7 @@ import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { deleteContact } from 'redux/contacts/operations';
 import ListItemText from '@mui/material/ListItemText';
-import ListItemButton from '@mui/material/ListItemButton';
-import { ListItemIcon } from '@mui/material';
+import { IconButton } from '@mui/material';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { StyledListItemText } from './ContactItem.styled';
 
@@ -15,16 +14,25 @@ export const ContactItem = ({ item: { name, number, id } }) => {
     <ListItemText>
       <StyledListItemText>
         <>
-          <p>Name: {name}</p> <p>Phone: {number}</p>
+          <p>
+            Name: <br /> {name}
+          </p>
+          <p>
+            Phone:
+            <br /> {number}
+          </p>
         </>
-        <ListItemButton
+        <IconButton
+          aria-label="delete"
           onClick={({ currentTarget: { id } }) => dispatch(deleteContact(id))}
           id={id}
+          color="secondary"
+          sx={{
+            marginLeft: 'auto',
+          }}
         >
-          <ListItemIcon>
-            <DeleteForeverIcon />
-          </ListItemIcon>
-        </ListItemButton>
+          <DeleteForeverIcon />
+        </IconButton>
       </StyledListItemText>
     </ListItemText>
   );

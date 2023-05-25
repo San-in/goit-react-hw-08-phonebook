@@ -5,13 +5,15 @@ export const SwitchFormBtn = styled(Link)`
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 50px;
+  padding: 18px 20px;
   color: white;
   text-decoration: none;
-  padding: 18px 20px;
   font-size: 24px;
   border-radius: 20px;
   background-color: rgb(128, 0, 128, 0.8);
   box-shadow: 0 0 5px 3px rgba(255, 255, 255, 0.5);
+
   &:hover,
   &:focus {
     background-color: rgb(128, 0, 128, 1);

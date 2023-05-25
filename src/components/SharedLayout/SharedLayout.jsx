@@ -14,7 +14,7 @@ export const SharedLayout = () => {
       <>
         <StyledFooter>Created by Sanin Oleksandr</StyledFooter>
         <ToastContainer
-          autoClose={300}
+          autoClose={500}
           draggablePercent={60}
           style={{ width: 200, fontSize: 14, fontWeight: 600 }}
         />

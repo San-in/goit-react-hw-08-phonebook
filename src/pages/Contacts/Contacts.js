@@ -1,5 +1,5 @@
 import { ContactForm } from 'components/ContactForm/ContactForm';
-import { ContactList } from 'components/ContactList/ContactList ';
+
 import { Filter } from 'components/Filter/Filter';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,6 +7,8 @@ import { selectIslogIn } from 'redux/auth/selectors';
 import { fetchContacts } from 'redux/contacts/operations';
 import { selectContacts } from 'redux/contacts/selectors';
 import { ContactListWrap, ContactWrap } from './Contacts.styled';
+import { ContactList } from 'components/ContactList/ContactList';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Contacts = () => {
   const dispatch = useDispatch();
@@ -15,21 +17,33 @@ const Contacts = () => {
 
   useEffect(() => {
     isLoginIn && dispatch(fetchContacts());
+    toast.success('Welcome!');
   }, [dispatch, isLoginIn]);
   return (
-    <ContactWrap>
-      <ContactForm />
-      <ContactListWrap>
-        {contacts.length > 0 ? (
-          <>
-            <Filter />
-            <ContactList />
-          </>
-        ) : (
-          <p>No contacts</p>
-        )}
-      </ContactListWrap>
-    </ContactWrap>
+    <>
+      <ContactWrap>
+        <ContactForm />
+        <ContactListWrap>
+          {contacts.length > 0 ? (
+            <>
+              <Filter />
+              <ContactList />
+            </>
+          ) : (
+            <p>No contacts</p>
+          )}
+        </ContactListWrap>
+      </ContactWrap>
+      <ToastContainer
+        autoClose={500}
+        draggablePercent={60}
+        style={{
+          width: 200,
+          fontSize: 14,
+          fontWeight: 600,
+        }}
+      />
+    </>
   );
 };
 

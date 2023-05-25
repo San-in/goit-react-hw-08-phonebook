@@ -3,7 +3,7 @@ import { ListItemIcon } from '@mui/material';
 
 export const StyledListItemText = styled.div`
   display: flex;
-  padding: 5px 0 5px 10px;
+  padding: 5px 10px;
   gap: 10px;
   border: 1px solid rgba(128, 0, 128, 0.8);
   justify-content: center;

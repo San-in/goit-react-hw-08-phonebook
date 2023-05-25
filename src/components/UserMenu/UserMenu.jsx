@@ -58,6 +58,6 @@ export const UserMenu = ({ anchorEl, handleClose }) => {
 };
 
 UserMenu.propTypes = {
-  anchorEl: PropTypes.func,
+  anchorEl: PropTypes.object,
   handleClose: PropTypes.func,
 };

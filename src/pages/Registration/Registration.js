@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom/dist';
 import { registrationUser } from 'redux/auth/operations';
 import { selectIslogIn } from 'redux/auth/selectors';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { AiOutlineHome } from 'react-icons/ai';
 import DeleteIcon from '@mui/icons-material/Delete';
 import SendIcon from '@mui/icons-material/Send';
@@ -17,9 +16,7 @@ import {
 } from 'common/styles';
 import {
   handleCancel,
-  handleClickShowPassword,
   handleEmailChange,
-  handleMouseDownPassword,
   handleNameChange,
   handlePasswordChange,
 } from 'common/helpers';
@@ -27,8 +24,6 @@ import {
   Box,
   Button,
   FormControl,
-  IconButton,
-  InputAdornment,
   InputLabel,
   OutlinedInput,
   TextField,
@@ -38,8 +33,6 @@ const Registration = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isLoginIn = useSelector(selectIslogIn);
@@ -122,22 +115,10 @@ const Registration = () => {
           </InputLabel>
           <OutlinedInput
             id="outlined-adornment-password"
-            type={showPassword ? 'text' : 'password'}
+            type="password"
             value={password}
             onChange={e => handlePasswordChange(e, setPassword)}
             required
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={e => handleClickShowPassword(e, setShowPassword)}
-                  onMouseDown={handleMouseDownPassword}
-                  edge="end"
-                >
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
             label="Password"
           />
         </FormControl>
@@ -166,15 +147,6 @@ const Registration = () => {
       </Box>
 
       <SwitchFormBtn to="/login">Go to Authorization</SwitchFormBtn>
-      <ToastContainer
-        autoClose={300}
-        draggablePercent={60}
-        style={{
-          width: 200,
-          fontSize: 14,
-          fontWeight: 600,
-        }}
-      />
     </StyledAuthWrap>
   );
 };

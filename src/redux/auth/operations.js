@@ -32,9 +32,9 @@ export const logInUser = createAsyncThunk(
         toast.warning('Both fields must be filled');
         return;
       }
+
       const { data } = await axios.post('/users/login', body);
-      setToken(data.token);
-      toast.success('You are logged in');
+
       return data;
     } catch (error) {
       toast.error('Incorrect data');

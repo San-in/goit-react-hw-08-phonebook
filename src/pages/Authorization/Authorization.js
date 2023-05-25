@@ -6,15 +6,13 @@ import {
   Box,
   Button,
   FormControl,
-  IconButton,
-  InputAdornment,
   InputLabel,
   OutlinedInput,
   TextField,
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import SendIcon from '@mui/icons-material/Send';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
+
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {
@@ -26,14 +24,12 @@ import {
 import {
   handleCancel,
   handleEmailChange,
-  handleMouseDownPassword,
   handlePasswordChange,
 } from 'common/helpers';
 
 const Authorization = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -42,8 +38,6 @@ const Authorization = () => {
     dispatch(logInUser({ email, password }));
     handleCancel([setEmail, setPassword]);
   };
-
-  const handleClickShowPassword = () => setShowPassword(show => !show);
 
   return (
     <StyledAuthWrap>
@@ -101,22 +95,10 @@ const Authorization = () => {
           </InputLabel>
           <OutlinedInput
             id="outlined-adornment-password"
-            type={showPassword ? 'text' : 'password'}
+            type="password"
             value={password}
             onChange={e => handlePasswordChange(e, setPassword)}
             required
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  edge="end"
-                >
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
             label="Password"
           />
         </FormControl>
@@ -145,15 +127,6 @@ const Authorization = () => {
       </Box>
 
       <SwitchFormBtn to="/register">Go to Registration</SwitchFormBtn>
-      <ToastContainer
-        autoClose={300}
-        draggablePercent={60}
-        style={{
-          width: 200,
-          fontSize: 14,
-          fontWeight: 600,
-        }}
-      />
     </StyledAuthWrap>
   );
 };

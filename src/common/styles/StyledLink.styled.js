@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 export const StyledLink = styled(Link)`
-  min-width: 220px;
+  min-width: 180px;
   display: inline-flex;
   align-items: center;
   justify-content: center;

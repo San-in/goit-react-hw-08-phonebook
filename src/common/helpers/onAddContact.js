@@ -10,6 +10,8 @@ export const onAddContact = (e, dispatch, contacts) => {
   );
   if (isContactExist) {
     toast.warning(`${name.value} is already in contacts.`);
+  } else if (name.value.length > 12 || number.value.lenght > 12) {
+    toast.warning('Name and Phone number should be shorter than 12 symbols');
   } else {
     dispatch(
       addContact({
