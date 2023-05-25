@@ -8,7 +8,7 @@ import { fetchContacts } from 'redux/contacts/operations';
 import { selectContacts } from 'redux/contacts/selectors';
 import { ContactListWrap, ContactWrap } from './Contacts.styled';
 import { ContactList } from 'components/ContactList/ContactList';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 
 const Contacts = () => {
   const dispatch = useDispatch();
@@ -17,8 +17,8 @@ const Contacts = () => {
 
   useEffect(() => {
     isLoginIn && dispatch(fetchContacts());
-    toast.success('Welcome!');
   }, [dispatch, isLoginIn]);
+
   return (
     <>
       <ContactWrap>
