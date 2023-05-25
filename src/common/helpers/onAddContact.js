@@ -4,7 +4,6 @@ import { changeFilter } from 'redux/filter/filterSlice';
 
 export const onAddContact = (e, dispatch, contacts) => {
   e.preventDefault();
-  console.log(e.currentTarget);
   const { name, number } = e.currentTarget;
   const isContactExist = contacts.find(
     contact => contact.name.toLowerCase() === name.value.toLowerCase()

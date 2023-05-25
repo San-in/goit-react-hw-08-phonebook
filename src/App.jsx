@@ -8,11 +8,11 @@ import { setToken } from 'common/helpers/helpersAxious';
 import { PublicRoot } from 'common/PublicRoot';
 import { StyledPacmanLoader } from 'common/styles';
 
-const Home = lazy(() => import('pages/Home'));
-const Contacts = lazy(() => import('pages/Contacts'));
-const Registration = lazy(() => import('pages/Registration'));
-const Authorization = lazy(() => import('pages/Authorization'));
-const NotFound = lazy(() => import('pages/NotFound'));
+const Home = lazy(() => import('pages/Home/Home'));
+const Contacts = lazy(() => import('pages/Contacts/Contacts'));
+const Registration = lazy(() => import('pages/Registration/Registration'));
+const Authorization = lazy(() => import('pages/Authorization/Authorization'));
+const NotFound = lazy(() => import('pages/NotFound/NotFound'));
 
 export const App = () => {
   const token = useSelector(selectToken);

@@ -1,28 +1,32 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import {
-  StyledContactItem,
-  StyledContactBtn,
-} from 'components/ContactItem/ContactItem.styled';
 import { deleteContact } from 'redux/contacts/operations';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemButton from '@mui/material/ListItemButton';
+import { ListItemIcon } from '@mui/material';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { StyledListItemText } from './ContactItem.styled';
 
-export const ContactItem = ({ item: { name, phone, id } }) => {
+export const ContactItem = ({ item: { name, number, id } }) => {
   const dispatch = useDispatch();
 
   return (
-    <StyledContactItem>
-      <p>
-        {name}: {phone}
-      </p>
-      <StyledContactBtn
-        type="button"
-        onClick={({ target: { id } }) => dispatch(deleteContact(id))}
-        id={id}
-      >
-        Delete
-      </StyledContactBtn>
-    </StyledContactItem>
+    <ListItemText>
+      <StyledListItemText>
+        <>
+          <p>Name: {name}</p> <p>Phone: {number}</p>
+        </>
+        <ListItemButton
+          onClick={({ currentTarget: { id } }) => dispatch(deleteContact(id))}
+          id={id}
+        >
+          <ListItemIcon>
+            <DeleteForeverIcon />
+          </ListItemIcon>
+        </ListItemButton>
+      </StyledListItemText>
+    </ListItemText>
   );
 };
 

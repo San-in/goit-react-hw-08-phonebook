@@ -1,16 +1,17 @@
 import styled from '@emotion/styled';
+import { ListItemIcon } from '@mui/material';
 
-export const StyledContactItem = styled.li`
+export const StyledListItemText = styled.div`
   display: flex;
-  gap: 20px;
-  font-size: 20px;
-  margin-bottom: 10px;
+  padding: 5px 0 5px 10px;
+  gap: 10px;
+  border: 1px solid rgba(128, 0, 128, 0.8);
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.7);
 `;
 
-export const StyledContactBtn = styled.button`
-  display: inline-block;
-  align-self: center;
-  padding: 5px 20px;
-  border-radius: 10px;
-  cursor: pointer;
+export const StyledListItemIcon = styled(ListItemIcon)`
+  padding: 0;
 `;

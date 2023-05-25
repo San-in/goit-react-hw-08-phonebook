@@ -1,8 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { FilterLabel, FilterInput } from 'components/Filter/Filter.styled';
+import { FilterLabel } from 'components/Filter/Filter.styled';
 import { selectFilterValue } from 'redux/filter/selectors';
-import { onBlur, onChange } from 'common/helpers';
+import { onChange } from 'common/helpers';
+import { TextField } from '@mui/material';
 
 export const Filter = () => {
   const dispatch = useDispatch();
@@ -11,13 +12,25 @@ export const Filter = () => {
   return (
     <>
       <FilterLabel htmlFor="find">Find contacts by name</FilterLabel>
-      <FilterInput
-        type="text"
+      <TextField
+        hiddenLabel
+        id="filled-hidden-label-small"
+        variant="filled"
+        size="small"
         name="find"
-        id="find"
+        color="secondary"
         value={filterValue}
         onChange={e => onChange(e, dispatch)}
-        onBlur={onBlur}
+        onBlur={() => onChange('', dispatch)}
+        sx={{
+          backgroundColor: 'rgba(128,0, 128, 0.4)',
+          '&:hover': {
+            backgroundColor: 'rgba(128,0, 128, 0.6)',
+          },
+          '&:focus': {
+            backgroundColor: 'rgba(128,0, 128, 0.6)',
+          },
+        }}
       />
     </>
   );

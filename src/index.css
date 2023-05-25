@@ -40,3 +40,8 @@ div {
   color: orangered;
   margin-right: 10px;
 }
+
+.MuiButtonBase-root.MuiListItemButton-root.MuiListItemButton-gutters.MuiListItemButton-root.MuiListItemButton-gutters.css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root {
+  padding: 0;
+  align-self: flex-end;
+}
