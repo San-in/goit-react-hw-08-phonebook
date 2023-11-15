@@ -53,7 +53,7 @@ const Authorization = () => {
           maxWidth: '50vw',
           display: 'flex',
           flexDirection: 'column',
-          justufyContent: 'center',
+          justifyContent: 'center',
           alignItems: 'center',
           borderRadius: '20px',
           backgroundColor: 'rgba(255, 255, 255, 0.7)',
